@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+    wecomflask:
+        build:  # 构建自定义镜像
+            context: .  # 自定义镜像Dockerfile文件所在路径
+            dockerfile: Dockerfile  # 自定义镜像Dockerfile文件名称
+        image: flask:1.0   # 构建好的镜像名称及标签
+        container_name: wecomflask  # 自定义容器名称
+        environment:  # 设置环境变量
+            - TZ=Asia/Shanghai  # 时区
+        volumes: # 映射文件目录
+            - ..:/app
+        ports:  # 映射端口
+            - 5000:5000     # 冒号左边可以改成自己服务器未被占用的端口
+        restart: unless-stopped
+networks:
+    default:
+        name: flask_pro
