@@ -11,7 +11,7 @@ services:
         volumes: # 映射文件目录
             - ..:/app
         ports:  # 映射端口
-            - 5000:5000     # 冒号左边可以改成自己服务器未被占用的端口
+            - 5430:5000     # 冒号左边可以改成自己服务器未被占用的端口
         restart: unless-stopped
 networks:
     default:
