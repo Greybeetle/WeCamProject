@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataFrame in HTML</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>预测期数</th>
+                <th>红球_1</th>
+                <th>红球_2</th>
+                <th>红球_3</th>
+                <th>红球_4</th>
+                <th>红球_5</th>
+                <th>红球_6</th>
+                <th>蓝球</th>
+                <th>红球均值</th>
+                <th>红球大小</th>
+                <th>红球大概率数字命中个数</th>
+                <th>奇数个数</th>
+                <th>质数个数</th>
+                <th>连号个数</th>
+                <th>小中大区比</th>
+                <th>蓝球是否命中大概率数字</th>
+                <th>蓝球是否遗漏超过10次</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in df.iterrows() %}
+            <tr>
+                <td>{{ row['预测期数'] }}</td>
+                <td>{{ row['红球_1'] }}</td>
+                <td>{{ row['红球_2'] }}</td>
+                <td>{{ row['红球_3'] }}</td>
+                <td>{{ row['红球_4'] }}</td>
+                <td>{{ row['红球_5'] }}</td>
+                <td>{{ row['红球_6'] }}</td>
+                <td>{{ row['蓝球'] }}</td>
+                <td>{{ row['红球均值'] }}</td>
+                <td>{{ row['红球大小'] }}</td>
+                <td>{{ row['大概率数字命中个数'] }}</td>
+                <td>{{ row['奇数个数'] }}</td>
+                <td>{{ row['质数个数'] }}</td>
+                <td>{{ row['连号个数'] }}</td>
+                <td>{{ row['小中大区比'] }}</td>
+                <td>{{ row['蓝球可能性1'] }}</td>
+                <td>{{ row['蓝球可能性2'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DataFrame in HTML</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>红球_1</th>
+                <th>红球_2</th>
+                <th>红球_3</th>
+                <th>红球_4</th>
+                <th>红球_5</th>
+                <th>红球_6</th>
+                <th>蓝球</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for index, row in df.iterrows() %}
+            <tr>
+                <td>{{ row['红球_1'] }}</td>
+                <td>{{ row['红球_2'] }}</td>
+                <td>{{ row['红球_3'] }}</td>
+                <td>{{ row['红球_4'] }}</td>
+                <td>{{ row['红球_5'] }}</td>
+                <td>{{ row['红球_6'] }}</td>
+                <td>{{ row['蓝球'] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
