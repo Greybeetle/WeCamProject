@@ -12,6 +12,8 @@
 from ssq_predict import config, create_app, db
 from flask_apscheduler import APScheduler
 import requests
+from utils.setup_logger import setup_logger
+logger = setup_logger("app")
 
 scheduler = APScheduler()
 
@@ -28,7 +30,7 @@ scheduler.init_app(app)
 scheduler.start()
 
 
-# @scheduler.task('cron', hour='16', second='00')
+@scheduler.task('cron', day_of_week='1, 3, 6', hour='18', minute='00', second='00')
 def random_ssq_scheduler():
     url = "http://127.0.0.1:{}/random_ssq".format(config.run_config['PORT'])
 
@@ -38,9 +40,24 @@ def random_ssq_scheduler():
     response = requests.request("GET", url, headers=headers, data=payload)
 
     if response.text == '200':
-        print("done")
+        logger.info("自动生成随机数组成功...")
     else:
-        print("false")
+        logger.error("自动生成随机数组失败...")
+
+
+@scheduler.task('cron', day_of_week='1, 3, 6', hour='18', minute='51', second='30')
+def random_ssq_scheduler():
+    url = "http://127.0.0.1:{}".format(config.run_config['PORT'])
+
+    payload = {}
+    headers = {}
+
+    response = requests.request("GET", url, headers=headers, data=payload)
+
+    if response.text == 'done':
+        logger.info("自动发送消息成功...")
+    else:
+        logger.error("自动发送消息失败...")
 
 
 if __name__ == '__main__':

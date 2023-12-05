@@ -92,9 +92,11 @@ def create_app():
         content = get_message_content()
         print(content)
         message_sender = MessageSender()
-        dd, __res_msg = message_sender.send_message(message_type='text', message=content)
-
-        return __res_msg
+        flag, __res_msg = message_sender.send_message(message_type='text', message=content)
+        if flag == 0:
+            return 'done'
+        else:
+            return 'err'
 
     def get_message_content():
         predict_data_sample = pd.DataFrame()
