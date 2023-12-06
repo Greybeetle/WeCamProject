@@ -30,7 +30,7 @@ scheduler.init_app(app)
 scheduler.start()
 
 
-@scheduler.task('cron', day_of_week='1, 3, 6', hour='18', minute='00', second='00')
+@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='24', second='00')
 def random_ssq_scheduler():
     url = "http://127.0.0.1:{}/random_ssq".format(config.run_config['PORT'])
 
@@ -45,7 +45,7 @@ def random_ssq_scheduler():
         logger.error("自动生成随机数组失败...")
 
 
-@scheduler.task('cron', day_of_week='1, 3, 6', hour='18', minute='51', second='30')
+@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='25', second='30')
 def random_ssq_scheduler():
     url = "http://127.0.0.1:{}".format(config.run_config['PORT'])
 
