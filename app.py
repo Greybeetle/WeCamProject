@@ -11,13 +11,11 @@
 
 from ssq_predict import config, create_app, db
 from flask_apscheduler import APScheduler
-from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 from utils.setup_logger import setup_logger
 logger = setup_logger("app")
 
 scheduler = APScheduler()
-sched = BackgroundScheduler(timezone='Asia/Shanghai')
 
 app = create_app()
 
@@ -32,7 +30,7 @@ scheduler.init_app(app)
 scheduler.start()
 
 
-@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='32', second='00')
+@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='32', second='00', timezone='Asia/Shanghai')
 def random_ssq_scheduler():
     url = "http://127.0.0.1:{}/random_ssq".format(config.run_config['PORT'])
 
@@ -47,7 +45,7 @@ def random_ssq_scheduler():
         logger.error("自动生成随机数组失败...")
 
 
-@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='32', second='30')
+@scheduler.task('cron', day_of_week='1, 2, 3, 6', hour='21', minute='32', second='30', timezone='Asia/Shanghai')
 def random_ssq_scheduler():
     url = "http://127.0.0.1:{}".format(config.run_config['PORT'])
 
