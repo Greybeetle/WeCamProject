@@ -11,11 +11,13 @@
 
 from ssq_predict import config, create_app, db
 from flask_apscheduler import APScheduler
+from apscheduler.schedulers.background import BackgroundScheduler
 import requests
 from utils.setup_logger import setup_logger
 logger = setup_logger("app")
 
 scheduler = APScheduler()
+sched = BackgroundScheduler(timezone='Asia/Shanghai')
 
 app = create_app()
 
