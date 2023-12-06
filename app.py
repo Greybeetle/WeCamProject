@@ -61,4 +61,4 @@ def random_ssq_scheduler():
 
 
 if __name__ == '__main__':
-    app.run(port=config.run_config['PORT'])
+    app.run(host=config.run_config['HOST'], port=config.run_config['PORT'])
