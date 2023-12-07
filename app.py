@@ -47,7 +47,7 @@ def random_ssq_scheduler():
 
 @scheduler.task('cron', day_of_week='1, 3, 6', hour='17', minute='35', second='00', timezone='Asia/Shanghai')
 def send_ssq_message():
-    url = "http://127.0.0.1:{}".format(config.run_config['PORT'])
+    url = "http://127.0.0.1:{}/robot".format(config.run_config['PORT'])
 
     payload = {}
     headers = {}

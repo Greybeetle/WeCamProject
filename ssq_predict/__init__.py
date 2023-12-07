@@ -87,7 +87,7 @@ def create_app():
         logger.info("已将随机生成的数据组写入到数据库中...")
         return "200"
 
-    @app.route("/")
+    @app.route("/robot")
     def index():
         content = get_message_content()
         print(content)
